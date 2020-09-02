@@ -12,20 +12,16 @@ from models.state import State
 app = Flask(__name__)
 
 
-@app.route('/states', strict_slashes=False)
-def states_list():
-    """display states_list inside the tag BODY 'UL' """
-    dictionary = storage.all(State)
-    return render_template('9-states.html', dictionary=dictionary)
-
-
+@app.route('/states', strict_slashes=False, defaults={'id': None})
 @app.route('/states/<id>', strict_slashes=False)
 def states_by_id(id):
     """display cities_by_states inside the tag BODY 'UL' """
     dictionary = storage.all(State)
-    for state in dictionary.items():
+    if id is None:
+        return render_template('9-states.html', dictionary=dictionary)
+    for state in dictionary.values():
         if state.id == id:
-            return render_template('9-states.html', state=state.id)
+            return render_template('9-states.html', state=state)
     return render_template('9-states.html')
 
 
