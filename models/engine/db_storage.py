@@ -73,5 +73,6 @@ class DBStorage:
         self.__session = scoped_session(session_factory)
 
     def close(self):
-        """Close this Session, clears all items and ends any transaction in progress"""
+        """Close this Session, clears all items and ends any
+        transaction in progress"""
         self.__session.remove()
