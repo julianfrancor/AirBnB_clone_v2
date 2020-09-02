@@ -24,3 +24,13 @@ class State(BaseModel, Base):
             return result
     else:
         name = ""
+
+        @property
+        def cities(self):
+            from models import storage
+            result = []
+            dict_cities = storage.all("City")
+            for key, obj in dict_cities.items():
+                if self.id == obj["state_id"]:
+                    result.append(obj)
+            return result
