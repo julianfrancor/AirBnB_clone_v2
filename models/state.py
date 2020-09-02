@@ -3,6 +3,7 @@
 from models.base_model import BaseModel, Base
 from sqlalchemy.orm import relationship
 from sqlalchemy import Column, Integer, String, ForeignKey
+from models.city import City
 from os import getenv
 
 
@@ -13,15 +14,6 @@ class State(BaseModel, Base):
         name = Column(String(128), nullable=False)
         cities = relationship("City", backref="state", cascade="all, delete")
 
-        @property
-        def cities(self):
-            from models import storage
-            result = []
-            dict_cities = storage.all("City")
-            for key, obj in dict_cities.items():
-                if self.id == obj["state_id"]:
-                    result.append(obj)
-            return result
     else:
         name = ""
 
@@ -29,8 +21,8 @@ class State(BaseModel, Base):
         def cities(self):
             from models import storage
             result = []
-            dict_cities = storage.all("City")
+            dict_cities = storage.all(City)
             for key, obj in dict_cities.items():
-                if self.id == obj["state_id"]:
+                if self.id == obj.state_id:
                     result.append(obj)
             return result
