@@ -75,4 +75,5 @@ class DBStorage:
     def close(self):
         """Close this Session, clears all items and ends any
         transaction in progress"""
-        self.__session.remove()
+        self.__session.close()
+        # self.__session.remove()
