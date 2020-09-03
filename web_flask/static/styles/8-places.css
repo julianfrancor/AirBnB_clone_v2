@@ -1,0 +1,87 @@
+section.places {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+section.places h1 {
+    font-size: 30px;
+    width: 100%;
+    /*cambia la superposicion de los elementos*/
+    z-index: -1;
+}
+/*this is Flexbox so it's kind of a separate continer*/
+section.places article {
+    width: 390px;
+    padding: 20px;
+    margin:20px;
+    border: #FF5A5F 1px solid;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: -1;
+}
+section.places article h2 {
+    font-size: 30px;
+    justify-content: center;
+    z-index: -1;
+}
+/*punto 8*/
+section.places article {
+    position: relative;
+    display: inline-block;
+}
+section.places article h2 {
+    margin-top: 4px;
+    text-align: center;
+}
+section.places article .price_by_night {
+    color: #FF5A5F;
+    border: #FF5A5F solid 4px;
+    border-radius: 100%;
+    min-width: 60px;
+    height: 60px;
+    font-size: 30px;
+    position:absolute;
+    box-sizing: content-box;
+    right: 20px;
+    top: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.information {
+    height: 80px;
+    border-top: #DDDDDD 1px solid;
+    border-bottom: #DDDDDD 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.information div {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    height: 80px;
+}
+.max_guest {
+    width: 100px;
+    background: url("../images/icon_group.png") top center;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+.number_rooms {
+    width: 100px;
+    background: url("../images/icon_bed.png") top center;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+.number_bathrooms {
+    width: 100px;
+    background: url("../images/icon_bath.png") top center;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+.place_name {
+    width: 80%;
+}
