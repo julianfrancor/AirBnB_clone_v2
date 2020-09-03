@@ -16,17 +16,17 @@ app = Flask(__name__)
 @app.route('/states/<id>', strict_slashes=False)
 def states_by_id(id):
     """display cities_by_states inside the tag BODY 'UL' """
-    dictionary = storage.all(State)
+    list_states = storage.all(State).values()
     if id is None:
-        return render_template('9-states.html', dictionary=dictionary)
-    for state in dictionary.values():
+        return render_template('9-states.html', list_states=list_states)
+    for state in list_states:
         if state.id == id:
             return render_template('9-states.html', state=state)
-    return render_template('9-states.html')
+    return render_template('9-states.html', state=None)
 
 
 @app.teardown_appcontext
-def teardown(whatever):
+def teardown(self):
     """After each request you must remove the current
     SQLAlchemy Session"""
     storage.close()
